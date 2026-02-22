@@ -1,0 +1,14 @@
+res://addons/ai_builder/plugin.gd
+res://addons/ai_builder/UI/AIBuilderDock.gd
+res://scenes/Main.tscn
+res://addons/ai_assistant/context/ContextCollector.gd
+res://addons/ai_assistant/core/CacheManager.gd
+res://addons/ai_assistant/core/AIOrchestrator.gd
+res://addons/ai_assistant/config/ProfileManager.gd
+res://addons/ai_assistant/executor/ActionExecutor.gd
+res://addons/ai_assistant/providers/BaseProvider.gd
+res://addons/ai_assistant/ui/MainDock.gd
+res://addons/ai_assistant/providers/OllamaProvider.gd
+res://addons/ai_builder/providers/OllamaProvider.gd
+res://addons/ai_builder/AIExecutor.gd
+res://addons/ai_builder/AIManager.gd

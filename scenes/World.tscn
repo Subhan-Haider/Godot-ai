@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_world_player"]
+[ext_resource type="Script" path="res://scripts/WorldGenerator.gd" id="2_world_gen"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="3_hud_script"]
+[ext_resource type="Script" path="res://scripts/ChatInterface.gd" id="4_chat_script"]
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.02, 0.1, 1)
+
+[node name="WorldGenerator" type="Node2D" parent="."]
+script = ExtResource("2_world_gen")
+
+[node name="Player" parent="." instance=ExtResource("1_world_player")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_hud_script")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/UI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 120.0
+
+[node name="HealthLabel" type="Label" parent="HUD/UI/VBox"]
+layout_mode = 2
+text = "HP: 100"
+theme_override_font_sizes/font_size = 24
+
+[node name="ScoreLabel" type="Label" parent="HUD/UI/VBox"]
+layout_mode = 2
+text = "Essence: 0"
+theme_override_font_sizes/font_size = 24
+
+[node name="ChatInterface" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_chat_script")
+
+[node name="Panel" type="ColorRect" parent="HUD/ChatInterface"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.8)
+
+[node name="History" type="RichTextLabel" parent="HUD/ChatInterface/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[color=cyan]AI ARCHITECT ONLINE. PRESS TAB TO TOGGLE.[/color]"
+
+[node name="Input" type="LineEdit" parent="HUD/ChatInterface/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "Talk to the Architect..."

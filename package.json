@@ -1,0 +1,22 @@
+{
+    "name": "godot-ai-assistant-plugin",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Build toolchain for the Godot AI Assistant & AI Builder editor plugins",
+    "private": true,
+    "scripts": {
+        "build": "node scripts/build.js",
+        "package": "node scripts/package.js",
+        "validate": "node scripts/validate.js",
+        "lint": "node scripts/lint.js",
+        "watch": "node scripts/watch.js",
+        "clean": "node scripts/clean.js",
+        "start": "npm run validate && npm run build"
+    },
+    "devDependencies": {
+        "archiver": "^6.0.1",
+        "chokidar": "^3.6.0",
+        "chalk": "^5.3.0",
+        "glob": "^10.4.5"
+    }
+}

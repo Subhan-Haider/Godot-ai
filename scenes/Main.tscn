@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://cx6m1v1n5b6g1"]
+
+[ext_resource type="Script" uid="uid://r70gx1v5tnpv" path="res://scripts/WorldSpawner.gd" id="1_spawner"]
+[ext_resource type="Script" uid="uid://c3tr6rh26d1be" path="res://scripts/Player.gd" id="2_player"]
+[ext_resource type="Script" uid="uid://dr87pjnm4hsfs" path="res://scripts/HUD.gd" id="3_hud"]
+[ext_resource type="Script" uid="uid://c736l7x3nb6ug" path="res://scripts/ChatInterface.gd" id="4_chat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1280, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(40, 40)
+
+[node name="Main" type="Node2D" unique_id=1745878692]
+
+[node name="Background" type="ColorRect" parent="." unique_id=730867380]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.047, 0.047, 0.11, 1)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1193859843]
+position = Vector2(576, 600)
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=28771560]
+offset_left = -576.0
+offset_top = -50.0
+offset_right = 576.0
+offset_bottom = 50.0
+color = Color(0, 0.8, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=208287125]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="WorldSpawner" type="Node2D" parent="." unique_id=1129473188]
+script = ExtResource("1_spawner")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=717085344]
+position = Vector2(200, 500)
+script = ExtResource("2_player")
+
+[node name="Visuals" type="ColorRect" parent="Player" unique_id=182302101]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1699472932]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1300570757]
+position = Vector2(4, -6)
+anchor_mode = 0
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=629057506]
+script = ExtResource("3_hud")
+
+[node name="VBox" type="VBoxContainer" parent="HUD" unique_id=2014101161]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 100.0
+
+[node name="ScoreLabel" type="Label" parent="HUD/VBox" unique_id=399719917]
+layout_mode = 2
+text = "DATA CHIPS: 0"
+
+[node name="SpeedLabel" type="Label" parent="HUD/VBox" unique_id=1187175513]
+layout_mode = 2
+text = "VELOCITY: 400 KM/H"
+
+[node name="Overlay" type="Control" parent="HUD" unique_id=1636033905]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Overlay" unique_id=1608357824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Message" type="Label" parent="HUD/Overlay" unique_id=83783227]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="RestartBtn" type="Button" parent="HUD/Overlay" unique_id=1507535609]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -197.0
+offset_right = -169.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "REBOOT"
+
+[node name="ChatInterface" type="Control" parent="HUD" unique_id=182464218]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 320.0
+grow_horizontal = 0
+script = ExtResource("4_chat")
+
+[node name="ColorRect" type="ColorRect" parent="HUD/ChatInterface" unique_id=584895351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="VBox" type="VBoxContainer" parent="HUD/ChatInterface" unique_id=1507600147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD/ChatInterface/VBox" unique_id=270465704]
+layout_mode = 2
+text = "NEURAL LINK [TAB]"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/ChatInterface/VBox" unique_id=1592650646]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="LineEdit" type="LineEdit" parent="HUD/ChatInterface/VBox" unique_id=1789253197]
+layout_mode = 2
+placeholder_text = "System command..."
+
+[connection signal="pressed" from="HUD/Overlay/RestartBtn" to="HUD" method="_on_restart_pressed"]
+[connection signal="text_submitted" from="HUD/ChatInterface/VBox/LineEdit" to="HUD/ChatInterface" method="_on_line_edit_text_submitted"]
