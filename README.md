@@ -50,6 +50,20 @@ Running AI locally gives you ultimate privacy and zero API costs.
 3. In the Godot AI Builder dock, select **Ollama** as the provider.
 4. Click the **Model Sync** button (`🔄`). The plugin will auto-detect your running instance.
 
+## 💡 FAQ & Troubleshooting
+
+*   **Error parsing URL /tags from Ollama**: Make sure you have the Ollama app running in the background and that the model is fully downloaded (`ollama pull llama3`). If the error persists, toggle the plugin off and on via Project Settings to clear cache.
+*   **The AI hallucinates invalid Godot 4 syntax**: If you are using weaker local models (like Llama3 8B), they may struggle with strict Godot 4 syntax. Try switching to a more powerful model via OpenRouter (like Claude-3.5-Sonnet or GPT-4o), or use the **Project Health Scanner** to auto-fix the errors.
+*   **Safe Mode is blocking my scripts**: Safe Mode is enabled by default to prevent the AI from overwriting core game files accidentally. You can toggle this off in the AI Builder dock under the 'Safety Controls' section.
+*   **API Key is not saving**: Go to your Godot settings and make sure Godot has read/write permissions for its `user://` directory, as API keys are stored in an encrypted configuration file there.
+
+## 🗺️ Roadmap Planner
+
+We are continuously improving the plugin. Upcoming features include:
+*   Visual Node dragging functionality to drop AI modules onto your scene.
+*   More advanced Audio and Image generation integrations.
+*   A fully chat-based inline script editor plugin.
+
 ## 🤝 Contributing
 Contributions are extremely welcome! Whether it's adding a new AI provider, improving the action executors, or designing robust prompts.
 1. Fork the project.
